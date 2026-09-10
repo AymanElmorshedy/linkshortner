@@ -86,12 +86,12 @@ export default function Home() {
 
         <div className="flex items-center gap-3">
           <Show when="signed-out">
-            <SignInButton mode="modal">
+            <SignInButton mode="modal" forceRedirectUrl="/dashboard">
               <Button variant="ghost" size="sm">
                 Sign in
               </Button>
             </SignInButton>
-            <SignUpButton mode="modal">
+            <SignUpButton mode="modal" forceRedirectUrl="/dashboard">
               <Button size="sm">Get started</Button>
             </SignUpButton>
           </Show>
@@ -120,7 +120,7 @@ export default function Home() {
 
             <div className="mt-8 flex flex-wrap items-center gap-3">
               <Show when="signed-out">
-                <SignUpButton mode="modal">
+                <SignUpButton mode="modal" forceRedirectUrl="/dashboard">
                   <Button size="lg" className="h-12 rounded-full px-6">
                     Start shortening for free
                     <ArrowRight className="size-4" />
@@ -241,7 +241,7 @@ export default function Home() {
           </h2>
         </div>
         <Show when="signed-out">
-          <SignUpButton mode="modal">
+          <SignUpButton mode="modal" forceRedirectUrl="/dashboard">
             <Button size="lg" className="h-12 rounded-full px-6">
               Create your free account
               <ArrowRight className="size-4" />
