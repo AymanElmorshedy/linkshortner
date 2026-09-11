@@ -13,7 +13,9 @@ export async function getLinksForUser(userId: string): Promise<Link[]> {
     .orderBy(desc(links.createdAt));
 }
 
-export async function getLinkByShortCode(shortCode: string): Promise<Link | undefined> {
+export async function getLinkByShortCode(
+  shortCode: string,
+): Promise<Link | undefined> {
   const [link] = await db
     .select()
     .from(links)
@@ -23,15 +25,22 @@ export async function getLinkByShortCode(shortCode: string): Promise<Link | unde
   return link;
 }
 
-const shortCodeAlphabet = "0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ";
+const shortCodeAlphabet =
+  "0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ";
 
 function generateShortCode(length: number): string {
   const bytes = randomBytes(length);
 
-  return Array.from(bytes, (byte) => shortCodeAlphabet[byte % shortCodeAlphabet.length]).join("");
+  return Array.from(
+    bytes,
+    (byte) => shortCodeAlphabet[byte % shortCodeAlphabet.length],
+  ).join("");
 }
 
-export async function createLink(userId: string, originalUrl: string): Promise<Link> {
+export async function createLink(
+  userId: string,
+  originalUrl: string,
+): Promise<Link> {
   for (let attempt = 0; attempt < 5; attempt += 1) {
     const shortCode = generateShortCode(6);
 
@@ -70,7 +79,10 @@ export async function updateLink(
   return link;
 }
 
-export async function deleteLink(userId: string, linkId: string): Promise<void> {
+export async function deleteLink(
+  userId: string,
+  linkId: string,
+): Promise<void> {
   const deletedLinks = await db
     .delete(links)
     .where(and(eq(links.id, linkId), eq(links.userId, userId)))

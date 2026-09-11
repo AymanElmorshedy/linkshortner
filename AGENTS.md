@@ -9,6 +9,7 @@
 ## 📋 Quick Start
 
 **LinkShorter** is a URL shortening application built with:
+
 - **Frontend**: Next.js 16.3.3, React 19, TypeScript 5, Tailwind CSS 4
 - **Backend**: Next.js API Routes with Drizzle ORM
 - **Database**: Neon Serverless PostgreSQL
@@ -16,15 +17,15 @@
 
 ### Core Technologies at a Glance
 
-| Layer | Technology | Version |
-|-------|-----------|---------|
-| Framework | Next.js App Router | 16.3.3 |
-| Language | TypeScript | 5.x |
-| UI Library | React | 19.2.8 |
-| Styling | Tailwind CSS | 4.x |
-| Database | Drizzle ORM | 1.0.0-rc.4 |
-| Database Engine | Neon PostgreSQL | Serverless |
-| Authentication | Clerk | 7.8.3 |
+| Layer           | Technology         | Version    |
+| --------------- | ------------------ | ---------- |
+| Framework       | Next.js App Router | 16.3.3     |
+| Language        | TypeScript         | 5.x        |
+| UI Library      | React              | 19.2.8     |
+| Styling         | Tailwind CSS       | 4.x        |
+| Database        | Drizzle ORM        | 1.0.0-rc.4 |
+| Database Engine | Neon PostgreSQL    | Serverless |
+| Authentication  | Clerk              | 7.8.3      |
 
 ### Environment Setup
 
@@ -45,18 +46,18 @@
 
 These docs establish **coding standards and patterns** for the LinkShorter project. Read in order based on what you're working on:
 
-| Document | Purpose | When to Read |
-|----------|---------|--------------|
-| **[Project Structure](./docs/project-structure.md)** | Directory layout, naming conventions, environment setup | First time setup, adding new files |
-| **[TypeScript Standards](./docs/typescript-standards.md)** | Type definitions, interfaces, patterns | Before writing any code |
-| **[Component Patterns](./docs/component-patterns.md)** | React components, server/client components, hooks | Building UI components |
-| **[Shadcn UI Standards](./docs/shadcn-ui-standards.md)** | Required shadcn-based component patterns and no-custom-component rules | Building or editing any UI |
-| **[API Routes](./docs/api-routes.md)** | Route handler patterns, response formats, auth | Creating/modifying API endpoints |
-| **[Database Schema](./docs/database-schema.md)** | Drizzle ORM, queries, schema patterns | Database work, queries |
-| **[Styling Conventions](./docs/styling-conventions.md)** | Tailwind CSS, dark mode, responsive design | UI and styling work |
-| **[Authentication](./docs/authentication.md)** | Clerk integration, protected routes, authorization | Auth-related features |
-| **[Clerk Auth Flow](./docs/clerk-auth-flow.md)** | Dashboard protection, home page redirects, modal auth | Implementing auth in pages and routes |
-| **[Coding Best Practices](./docs/coding-best-practices.md)** | Code organization, naming, errors, security, testing | General coding guidelines |
+| Document                                                     | Purpose                                                                | When to Read                          |
+| ------------------------------------------------------------ | ---------------------------------------------------------------------- | ------------------------------------- |
+| **[Project Structure](./docs/project-structure.md)**         | Directory layout, naming conventions, environment setup                | First time setup, adding new files    |
+| **[TypeScript Standards](./docs/typescript-standards.md)**   | Type definitions, interfaces, patterns                                 | Before writing any code               |
+| **[Component Patterns](./docs/component-patterns.md)**       | React components, server/client components, hooks                      | Building UI components                |
+| **[Shadcn UI Standards](./docs/shadcn-ui-standards.md)**     | Required shadcn-based component patterns and no-custom-component rules | Building or editing any UI            |
+| **[API Routes](./docs/api-routes.md)**                       | Route handler patterns, response formats, auth                         | Creating/modifying API endpoints      |
+| **[Database Schema](./docs/database-schema.md)**             | Drizzle ORM, queries, schema patterns                                  | Database work, queries                |
+| **[Styling Conventions](./docs/styling-conventions.md)**     | Tailwind CSS, dark mode, responsive design                             | UI and styling work                   |
+| **[Authentication](./docs/authentication.md)**               | Clerk integration, protected routes, authorization                     | Auth-related features                 |
+| **[Clerk Auth Flow](./docs/clerk-auth-flow.md)**             | Dashboard protection, home page redirects, modal auth                  | Implementing auth in pages and routes |
+| **[Coding Best Practices](./docs/coding-best-practices.md)** | Code organization, naming, errors, security, testing                   | General coding guidelines             |
 
 ---
 
@@ -101,7 +102,6 @@ These docs establish **coding standards and patterns** for the LinkShorter proje
 
 ---
 
-
 ---
 
 ## 🔒 Security Requirements
@@ -109,18 +109,21 @@ These docs establish **coding standards and patterns** for the LinkShorter proje
 **Every implementation must include:**
 
 1. **Authentication Check** - Verify user is signed in
+
    ```typescript
    const { userId } = await auth();
    if (!userId) return unauthorized();
    ```
 
 2. **Authorization Check** - Verify user owns resource
+
    ```typescript
    // Filter by userId in database queries
-   where: (table) => and(eq(table.id, id), eq(table.userId, userId))
+   where: (table) => and(eq(table.id, id), eq(table.userId, userId));
    ```
 
 3. **Input Validation** - Check user input before use
+
    ```typescript
    if (!validateUrl(url)) throw new ValidationError(...);
    ```
@@ -128,7 +131,7 @@ These docs establish **coding standards and patterns** for the LinkShorter proje
 4. **No Hardcoded Secrets** - Use environment variables
    ```typescript
    const key = process.env.CLERK_SECRET_KEY; // ✅
-   const key = "sk_...";  // ❌
+   const key = "sk_..."; // ❌
    ```
 
 ---
@@ -136,29 +139,34 @@ These docs establish **coding standards and patterns** for the LinkShorter proje
 ## 🧪 Testing Your Work
 
 ### TypeScript Validation
+
 ```bash
 npx tsc --noEmit
 ```
 
 ### Run Dev Server
+
 ```bash
 npm run dev
 # Visit http://localhost:3000
 ```
 
 ### Database Changes
+
 ```bash
 npx drizzle-kit push:pg
 npx drizzle-kit studio  # Visual DB browser
 ```
 
 ### Linting
+
 ```bash
 npm run lint
 npm run lint -- --fix
 ```
 
 ### Manual Testing Checklist
+
 - [ ] Light mode looks correct
 - [ ] Dark mode looks correct
 - [ ] Mobile responsive (use DevTools)
@@ -170,22 +178,23 @@ npm run lint -- --fix
 
 ## 📖 Key Files Reference
 
-| File | Purpose |
-|------|---------|
-| `app/layout.tsx` | Root layout with ClerkProvider |
-| `app/page.tsx` | Landing page template |
-| `db/schema.ts` | Database table definitions |
-| `db/index.ts` | Database connection setup |
-| `components/ui/` | Reusable UI components |
-| `lib/utils.ts` | Utility functions |
-| `.env.local` | Local environment variables (gitignored) |
-| `CLAUDE.md` | Claude-specific guidelines |
+| File             | Purpose                                  |
+| ---------------- | ---------------------------------------- |
+| `app/layout.tsx` | Root layout with ClerkProvider           |
+| `app/page.tsx`   | Landing page template                    |
+| `db/schema.ts`   | Database table definitions               |
+| `db/index.ts`    | Database connection setup                |
+| `components/ui/` | Reusable UI components                   |
+| `lib/utils.ts`   | Utility functions                        |
+| `.env.local`     | Local environment variables (gitignored) |
+| `CLAUDE.md`      | Claude-specific guidelines               |
 
 ---
 
 ## 🚀 Development Commands
 
 ### Setup & Running
+
 ```bash
 npm install              # Install dependencies
 npm run dev              # Start dev server (localhost:3000)
@@ -194,6 +203,7 @@ npm start                # Run production build
 ```
 
 ### Database
+
 ```bash
 npx drizzle-kit push:pg  # Apply schema changes
 npx drizzle-kit generate:pg  # Generate migrations
@@ -201,6 +211,7 @@ npx drizzle-kit studio   # Open Drizzle Studio UI
 ```
 
 ### Code Quality
+
 ```bash
 npm run lint             # Check linting
 npm run lint -- --fix    # Fix linting issues
@@ -214,6 +225,7 @@ npx tsc --noEmit         # Check TypeScript
 **Important**: This project uses **Next.js 16.3.3**, which has breaking changes from earlier versions.
 
 Before writing code:
+
 - Check `node_modules/next/dist/docs/` for current API documentation
 - Watch for deprecation warnings in console
 - Refer to [Next.js 16 migration guides](https://nextjs.org/docs)
@@ -227,6 +239,7 @@ Before writing code:
 ### Code Review Process
 
 When submitting code for review, ensure:
+
 1. All files follow naming conventions
 2. TypeScript strict mode passes (`npx tsc --noEmit`)
 3. Components include dark mode support
@@ -239,6 +252,7 @@ When submitting code for review, ensure:
 ### Documentation Updates
 
 Update these files when:
+
 - Adding new dependencies
 - Changing folder structure
 - Creating new common patterns
@@ -283,6 +297,7 @@ A: Pattern: `linkshorter.app/[shortCode]` (redirects to original URL)
 ## 📅 Last Updated
 
 Check git history for recent changes. Update this document when:
+
 - Dependencies are upgraded
 - New major patterns are established
 - Critical gotchas are discovered

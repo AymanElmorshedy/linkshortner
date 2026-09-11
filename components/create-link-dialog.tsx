@@ -25,7 +25,9 @@ export function CreateLinkDialog() {
   const [error, setError] = useState<string | null>(null);
   const [isPending, setIsPending] = useState(false);
 
-  async function handleSubmit(event: FormEvent<HTMLFormElement>): Promise<void> {
+  async function handleSubmit(
+    event: FormEvent<HTMLFormElement>,
+  ): Promise<void> {
     event.preventDefault();
     setIsPending(true);
     setError(null);
@@ -87,14 +89,28 @@ export function CreateLinkDialog() {
                 required
                 disabled={isPending}
               />
-              {error ? <p className="text-sm text-destructive">{error}</p> : null}
+              {error ? (
+                <p className="text-sm text-destructive">{error}</p>
+              ) : null}
             </div>
             <div className="flex justify-end gap-2">
-              <DialogClose render={<Button type="button" variant="outline" disabled={isPending} />}>
+              <DialogClose
+                render={
+                  <Button
+                    type="button"
+                    variant="outline"
+                    disabled={isPending}
+                  />
+                }
+              >
                 Cancel
               </DialogClose>
               <Button type="submit" disabled={isPending}>
-                {isPending ? <LoaderCircle className="size-4 animate-spin" /> : <Link2 className="size-4" />}
+                {isPending ? (
+                  <LoaderCircle className="size-4 animate-spin" />
+                ) : (
+                  <Link2 className="size-4" />
+                )}
                 {isPending ? "Creating..." : "Create link"}
               </Button>
             </div>

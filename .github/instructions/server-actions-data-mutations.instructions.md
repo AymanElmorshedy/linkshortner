@@ -2,6 +2,7 @@
 description: "Use when implementing or modifying data mutations, server actions, client components that call mutations, or Drizzle data helpers. Covers authentication, Zod validation, typed inputs, action placement, and database boundaries."
 <!-- applyTo: ["app/**/actions.ts", "app/**/*.tsx", "components/**/*.tsx", "data/**/*.ts"] -->
 ---
+
 # Server Actions and Data Mutations
 
 - Implement every data mutation as a server action. Server action files must be named `actions.ts` and colocated with the component that calls them.

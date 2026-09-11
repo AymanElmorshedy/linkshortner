@@ -1,0 +1,14 @@
+{
+  "sessionId": "095394d5-9bf5-4a56-a9ff-2a82cc070641",
+  "timestamp": 1789163459699,
+  "cwd": "D:\\ITRoots\\GitHubCobilotCourse\\linkshortner",
+  "toolName": "glob",
+  "toolArgs": {
+    "pattern": ".github/hooks/*",
+    "paths": "D:\\ITRoots\\GitHubCobilotCourse\\linkshortner"
+  },
+  "toolResult": {
+    "resultType": "success",
+    "textResultForLlm": "D:\\ITRoots\\GitHubCobilotCourse\\linkshortner\\.github\\hooks\\tool-output.json\nD:\\ITRoots\\GitHubCobilotCourse\\linkshortner\\.github\\hooks\\format.json"
+  }
+}

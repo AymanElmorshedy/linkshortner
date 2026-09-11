@@ -1,0 +1,14 @@
+{
+  "sessionId": "095394d5-9bf5-4a56-a9ff-2a82cc070641",
+  "timestamp": 1789163966321,
+  "cwd": "D:\\ITRoots\\GitHubCobilotCourse\\linkshortner",
+  "toolName": "powershell",
+  "toolArgs": {
+    "command": "bash -n ./.github/hooks/format.sh; '{\"toolName\":\"view\"}' | bash ./.github/hooks/format.sh",
+    "description": "Verify non-formatting tool is skipped"
+  },
+  "toolResult": {
+    "resultType": "success",
+    "textResultForLlm": "./.github/hooks/format.sh: line 18: node: command not found\n<shellId: 7 completed with exit code 127>"
+  }
+}

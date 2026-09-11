@@ -1,0 +1,14 @@
+{
+  "sessionId": "095394d5-9bf5-4a56-a9ff-2a82cc070641",
+  "timestamp": 1789163702651,
+  "cwd": "D:\\ITRoots\\GitHubCobilotCourse\\linkshortner",
+  "toolName": "powershell",
+  "toolArgs": {
+    "command": "$path = (Resolve-Path '.github\\hooks\\format.sh').Path; $content = [System.IO.File]::ReadAllText($path); [System.IO.File]::WriteAllText($path, $content.Replace(\"`r`n\", \"`n\"), [System.Text.UTF8Encoding]::new($false))",
+    "description": "Normalize shell script line endings"
+  },
+  "toolResult": {
+    "resultType": "success",
+    "textResultForLlm": "\n<shellId: 6 completed with exit code 0>"
+  }
+}

@@ -1,6 +1,5 @@
 ---
-description: read this before implementing or modifying authentication in the project 
-
+description: read this before implementing or modifying authentication in the project
 ---
 
 # Clerk Authentication Flow & Protected Routes
@@ -77,12 +76,12 @@ import { redirect } from 'next/navigation';
 
 export default async function DashboardPage() {
   const { userId } = await auth();
-  
+
   // ✅ Check authentication server-side
   if (!userId) {
     redirect('/'); // Redirect to home
   }
-  
+
   // Render protected content
   return (
     <div className="min-h-screen p-8">
@@ -108,24 +107,24 @@ import { Show, SignInButton, SignUpButton } from '@clerk/nextjs';
 export default function HomePage() {
   const { userId, isLoaded } = useAuth();
   const router = useRouter();
-  
+
   useEffect(() => {
     // ✅ Redirect authenticated users to dashboard
     if (isLoaded && userId) {
       router.push('/dashboard');
     }
   }, [isLoaded, userId, router]);
-  
+
   if (!isLoaded) {
     return <div className="flex items-center justify-center min-h-screen">Loading...</div>;
   }
-  
+
   // Only show landing page content for non-authenticated users
   return (
     <main className="flex min-h-screen flex-col bg-zinc-50 dark:bg-black">
       <header className="mx-auto flex w-full max-w-5xl items-center justify-between px-6 py-6">
         <div className="text-xl font-semibold">LinkShorter</div>
-        
+
         <div className="flex items-center gap-3">
           {/* Show sign in/up buttons only for unauthenticated users */}
           <Show when="signed-out">
@@ -142,7 +141,7 @@ export default function HomePage() {
           </Show>
         </div>
       </header>
-      
+
       {/* Landing page content */}
     </main>
   );
@@ -164,15 +163,15 @@ import { useEffect } from 'react';
 export function AuthButtons() {
   const { userId, isLoaded } = useAuth();
   const router = useRouter();
-  
+
   useEffect(() => {
     if (isLoaded && userId) {
       router.push('/dashboard');
     }
   }, [isLoaded, userId, router]);
-  
+
   if (!isLoaded) return null;
-  
+
   return (
     <div className="flex gap-3">
       {/* ✅ SignInButton automatically launches modal */}
@@ -181,7 +180,7 @@ export function AuthButtons() {
           Sign In
         </button>
       </SignInButton>
-      
+
       {/* ✅ SignUpButton automatically launches modal */}
       <SignUpButton mode="modal">
         <button className="px-4 py-2 bg-zinc-950 text-white rounded dark:bg-white dark:text-zinc-950">
@@ -203,27 +202,27 @@ All API routes that access user data must verify authentication:
 
 ```typescript
 // app/api/links/route.ts
-import { auth } from '@clerk/nextjs/server';
-import { NextResponse } from 'next/server';
-import { db } from '@/db';
-import { eq } from 'drizzle-orm';
+import { auth } from "@clerk/nextjs/server";
+import { NextResponse } from "next/server";
+import { db } from "@/db";
+import { eq } from "drizzle-orm";
 
 export async function GET(request: Request) {
   // ✅ Always authenticate first
   const { userId } = await auth();
-  
+
   if (!userId) {
     return NextResponse.json(
-      { success: false, error: 'Unauthorized', status: 401 },
-      { status: 401 }
+      { success: false, error: "Unauthorized", status: 401 },
+      { status: 401 },
     );
   }
-  
+
   // ✅ Filter by userId (never return other users' data)
   const userLinks = await db.query.links.findMany({
     where: (table) => eq(table.userId, userId),
   });
-  
+
   return NextResponse.json({ success: true, data: userLinks });
 }
 ```
@@ -240,11 +239,11 @@ import { auth, currentUser } from '@clerk/nextjs/server';
 
 export async function UserProfile() {
   const user = await currentUser();
-  
+
   if (!user) {
     return <div>Not signed in</div>;
   }
-  
+
   return (
     <div>
       <p>Email: {user.primaryEmailAddress?.emailAddress}</p>
@@ -265,11 +264,11 @@ import { useAuth, useUser } from '@clerk/nextjs';
 export function UserGreeting() {
   const { userId, isLoaded } = useAuth();
   const { user } = useUser();
-  
+
   if (!isLoaded) return <div>Loading...</div>;
-  
+
   if (!userId) return <div>Please sign in</div>;
-  
+
   return <div>Welcome, {user?.firstName}!</div>;
 }
 ```
@@ -289,14 +288,14 @@ export function Header() {
   return (
     <header className="flex items-center justify-between p-4">
       <h1>LinkShorter</h1>
-      
+
       {/* Show these when logged out */}
       <Show when="signed-out">
         <div className="flex gap-3">
           {/* Auth buttons */}
         </div>
       </Show>
-      
+
       {/* Show these when logged in */}
       <Show when="signed-in">
         <UserButton />
@@ -310,26 +309,29 @@ export function Header() {
 
 ```typescript
 // app/actions/createLink.ts
-'use server';
+"use server";
 
-import { auth } from '@clerk/nextjs/server';
-import { db } from '@/db';
+import { auth } from "@clerk/nextjs/server";
+import { db } from "@/db";
 
 export async function createLink(url: string, title?: string) {
   const { userId } = await auth();
-  
+
   // ✅ Always verify userId
   if (!userId) {
-    throw new Error('Unauthorized: User must be signed in');
+    throw new Error("Unauthorized: User must be signed in");
   }
-  
+
   // Create link associated with user
-  const newLink = await db.insert(links).values({
-    userId,
-    originalUrl: url,
-    title: title ?? null,
-  }).returning();
-  
+  const newLink = await db
+    .insert(links)
+    .values({
+      userId,
+      originalUrl: url,
+      title: title ?? null,
+    })
+    .returning();
+
   return newLink[0];
 }
 ```
@@ -341,7 +343,7 @@ export async function createLink(url: string, title?: string) {
 ### Before Deploying Any Feature
 
 - [ ] Clerk is the ONLY auth method used (no custom sessions, no other OAuth)
-- [ ] Protected routes verify `userId` from `auth()` 
+- [ ] Protected routes verify `userId` from `auth()`
 - [ ] Database queries filter by `userId` (never return all user data)
 - [ ] API routes return 401 if `userId` is missing
 - [ ] Home page redirects authenticated users to dashboard
@@ -356,13 +358,13 @@ export async function createLink(url: string, title?: string) {
 
 ```typescript
 // ❌ Don't use custom authentication
-const user = localStorage.getItem('user'); // WRONG!
+const user = localStorage.getItem("user"); // WRONG!
 
 // ❌ Don't expose userId without verification
 return db.query.links.findMany(); // Returns ALL links!
 
 // ❌ Don't use separate sign-in/sign-up pages
-redirect('/sign-in'); // Use modal instead
+redirect("/sign-in"); // Use modal instead
 
 // ❌ Don't skip auth checks
 export async function GET() {
@@ -370,7 +372,8 @@ export async function GET() {
 }
 
 // ❌ Don't mix auth methods
-if (customAuth || clerkAuth) { // Use ONLY Clerk!
+if (customAuth || clerkAuth) {
+  // Use ONLY Clerk!
 }
 ```
 
@@ -378,13 +381,13 @@ if (customAuth || clerkAuth) { // Use ONLY Clerk!
 
 ## Debugging Authentication Issues
 
-| Problem | Solution |
-|---------|----------|
-| "userId is undefined" | Verify `.env.local` has Clerk keys; ClerkProvider wraps app |
-| Sign-in opens new page | Use `mode="modal"` in SignInButton |
-| Authenticated user stays on home | Check useEffect redirect in page.tsx |
-| API returns 401 unexpectedly | Ensure `auth()` is called, verify Clerk middleware setup |
-| User data not loading | Check `useUser()` and `useAuth()` `isLoaded` flag |
+| Problem                          | Solution                                                    |
+| -------------------------------- | ----------------------------------------------------------- |
+| "userId is undefined"            | Verify `.env.local` has Clerk keys; ClerkProvider wraps app |
+| Sign-in opens new page           | Use `mode="modal"` in SignInButton                          |
+| Authenticated user stays on home | Check useEffect redirect in page.tsx                        |
+| API returns 401 unexpectedly     | Ensure `auth()` is called, verify Clerk middleware setup    |
+| User data not loading            | Check `useUser()` and `useAuth()` `isLoaded` flag           |
 
 ---
 
@@ -399,7 +402,8 @@ if (customAuth || clerkAuth) { // Use ONLY Clerk!
 
 ## Summary
 
-**The Golden Rule**: 
+**The Golden Rule**:
+
 > Every user-facing operation must verify the `userId` from Clerk. If `userId` is missing or doesn't match the resource owner, deny access immediately.
 
 This ensures LinkShorter remains secure, with all authentication flowing through Clerk and all user data properly scoped to the authenticated user.

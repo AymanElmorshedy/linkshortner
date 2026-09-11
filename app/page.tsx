@@ -3,11 +3,8 @@
 import { Show, SignInButton, SignUpButton, useAuth } from "@clerk/nextjs";
 import {
   ArrowRight,
-  BarChart3,
   Check,
-  Globe2,
   Link2,
-  MousePointerClick,
   ShieldCheck,
   Sparkles,
   Zap,
@@ -25,10 +22,10 @@ const features = [
       "Turn any long URL into a clean, memorable short link without slowing down your workflow.",
   },
   {
-    icon: BarChart3,
-    title: "Track what works",
+    icon: Link2,
+    title: "Keep links organized",
     description:
-      "See clicks at a glance and understand which links and campaigns are driving real engagement.",
+      "Store and manage your short links in one clear place so your workflow stays focused and tidy.",
   },
   {
     icon: ShieldCheck,
@@ -41,7 +38,7 @@ const features = [
 const benefits = [
   "Unlimited link organization",
   "Simple, shareable short URLs",
-  "Analytics that are easy to understand",
+  "A cleaner way to manage your links",
 ];
 
 export default function Home() {
@@ -68,18 +65,30 @@ export default function Home() {
   return (
     <main className="min-h-screen overflow-hidden bg-background text-foreground">
       <header className="mx-auto flex w-full max-w-7xl items-center justify-between px-6 py-6 lg:px-10">
-        <a href="#" className="flex items-center gap-3" aria-label="LinkShorter home">
+        <a
+          href="#"
+          className="flex items-center gap-3"
+          aria-label="LinkShorter home"
+        >
           <span className="flex size-9 items-center justify-center rounded-xl bg-primary text-sm font-bold text-primary-foreground">
             <Link2 className="size-4" />
           </span>
-          <span className="text-lg font-semibold tracking-tight">LinkShorter</span>
+          <span className="text-lg font-semibold tracking-tight">
+            LinkShorter
+          </span>
         </a>
 
         <nav className="hidden items-center gap-8 text-sm text-muted-foreground md:flex">
-          <a className="transition-colors hover:text-foreground" href="#features">
+          <a
+            className="transition-colors hover:text-foreground"
+            href="#features"
+          >
             Features
           </a>
-          <a className="transition-colors hover:text-foreground" href="#how-it-works">
+          <a
+            className="transition-colors hover:text-foreground"
+            href="#how-it-works"
+          >
             How it works
           </a>
         </nav>
@@ -114,8 +123,9 @@ export default function Home() {
               <span className="text-muted-foreground">Big possibilities.</span>
             </h1>
             <p className="mt-6 max-w-xl text-lg leading-8 text-muted-foreground">
-              Make every link easier to share, easier to remember, and easier to measure. LinkShorter
-              gives you one clear place to manage your digital presence.
+              Make every link easier to share, easier to remember, and easier to
+              manage. LinkShorter gives you one clear place to organize your
+              digital presence.
             </p>
 
             <div className="mt-8 flex flex-wrap items-center gap-3">
@@ -128,7 +138,11 @@ export default function Home() {
                 </SignUpButton>
               </Show>
               <a href="#how-it-works">
-                <Button variant="outline" size="lg" className="h-12 rounded-full px-6">
+                <Button
+                  variant="outline"
+                  size="lg"
+                  className="h-12 rounded-full px-6"
+                >
                   See how it works
                 </Button>
               </a>
@@ -178,25 +192,27 @@ export default function Home() {
                     <div className="mb-2 text-[10px] font-medium uppercase tracking-widest text-primary/70">
                       Short link
                     </div>
-                    <p className="font-medium text-foreground">linkshorter.app/summer</p>
+                    <p className="font-medium text-foreground">
+                      linkshorter.app/summer
+                    </p>
                   </div>
                 </div>
 
                 <div className="mt-4 grid grid-cols-3 gap-3">
                   <div className="rounded-xl border border-border bg-card p-3">
-                    <MousePointerClick className="size-4 text-muted-foreground" />
-                    <p className="mt-2 text-lg font-semibold">12.4k</p>
-                    <p className="text-[10px] text-muted-foreground">Clicks</p>
+                    <Link2 className="size-4 text-muted-foreground" />
+                    <p className="mt-2 text-lg font-semibold">Fast</p>
+                    <p className="text-[10px] text-muted-foreground">Setup</p>
                   </div>
                   <div className="rounded-xl border border-border bg-card p-3">
-                    <Globe2 className="size-4 text-muted-foreground" />
-                    <p className="mt-2 text-lg font-semibold">24</p>
-                    <p className="text-[10px] text-muted-foreground">Countries</p>
+                    <Sparkles className="size-4 text-muted-foreground" />
+                    <p className="mt-2 text-lg font-semibold">Clean</p>
+                    <p className="text-[10px] text-muted-foreground">Links</p>
                   </div>
                   <div className="rounded-xl border border-border bg-card p-3">
-                    <BarChart3 className="size-4 text-muted-foreground" />
-                    <p className="mt-2 text-lg font-semibold">6.8%</p>
-                    <p className="text-[10px] text-muted-foreground">CTR</p>
+                    <ShieldCheck className="size-4 text-muted-foreground" />
+                    <p className="mt-2 text-lg font-semibold">Secure</p>
+                    <p className="text-[10px] text-muted-foreground">Storage</p>
                   </div>
                 </div>
               </div>
@@ -208,24 +224,34 @@ export default function Home() {
       <section id="features" className="border-y border-border bg-card/40">
         <div className="mx-auto w-full max-w-7xl px-6 py-20 lg:px-10">
           <div className="max-w-2xl">
-            <p className="text-sm font-medium uppercase tracking-[0.2em] text-primary">Everything in one place</p>
+            <p className="text-sm font-medium uppercase tracking-[0.2em] text-primary">
+              Everything in one place
+            </p>
             <h2 className="mt-4 text-3xl font-semibold tracking-tight sm:text-4xl">
               Your links, working harder for you.
             </h2>
             <p className="mt-4 leading-7 text-muted-foreground">
-              Skip the clutter and focus on sharing. LinkShorter keeps the essentials fast, focused, and easy to use.
+              Skip the clutter and focus on sharing. LinkShorter keeps the
+              essentials fast, focused, and easy to use.
             </p>
           </div>
           <div className="mt-12 grid gap-5 md:grid-cols-3">
             {features.map((feature) => {
               const Icon = feature.icon;
               return (
-                <article key={feature.title} className="rounded-2xl border border-border bg-background p-6">
+                <article
+                  key={feature.title}
+                  className="rounded-2xl border border-border bg-background p-6"
+                >
                   <div className="flex size-11 items-center justify-center rounded-xl bg-primary/10 text-primary">
                     <Icon className="size-5" />
                   </div>
-                  <h3 className="mt-5 text-lg font-semibold">{feature.title}</h3>
-                  <p className="mt-3 text-sm leading-6 text-muted-foreground">{feature.description}</p>
+                  <h3 className="mt-5 text-lg font-semibold">
+                    {feature.title}
+                  </h3>
+                  <p className="mt-3 text-sm leading-6 text-muted-foreground">
+                    {feature.description}
+                  </p>
                 </article>
               );
             })}
@@ -235,7 +261,9 @@ export default function Home() {
 
       <section className="mx-auto flex w-full max-w-7xl flex-col items-start justify-between gap-8 px-6 py-20 sm:flex-row sm:items-center lg:px-10">
         <div>
-          <p className="text-sm font-medium uppercase tracking-[0.2em] text-primary">Ready when you are</p>
+          <p className="text-sm font-medium uppercase tracking-[0.2em] text-primary">
+            Ready when you are
+          </p>
           <h2 className="mt-3 max-w-xl text-3xl font-semibold tracking-tight sm:text-4xl">
             Start sharing links people remember.
           </h2>

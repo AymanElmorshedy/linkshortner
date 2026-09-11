@@ -1,0 +1,13 @@
+{
+  "sessionId": "095394d5-9bf5-4a56-a9ff-2a82cc070641",
+  "timestamp": 1789163639098,
+  "cwd": "D:\\ITRoots\\GitHubCobilotCourse\\linkshortner",
+  "toolName": "view",
+  "toolArgs": {
+    "path": "D:\\ITRoots\\GitHubCobilotCourse\\linkshortner\\.github\\hooks\\format.sh"
+  },
+  "toolResult": {
+    "resultType": "success",
+    "textResultForLlm": "#!/usr/bin/env bash\r\n\r\nset -euo pipefail\r\n\r\ntool_name=\"$(\r\n  node -e '\r\n    let input = \"\";\r\n    process.stdin.setEncoding(\"utf8\");\r\n    process.stdin.on(\"data\", (chunk) => {\r\n      input += chunk;\r\n    });\r\n    process.stdin.on(\"end\", () => {\r\n      const payload = JSON.parse(input);\r\n      process.stdout.write(payload.toolName ?? \"\");\r\n    });\r\n  '\r\n)\"\r\n\r\nif [[ \"$tool_name\" == \"create\" || \"$tool_name\" == \"edit\" ]]; then\r\n  npx prettier --write .\r\nfi\r\n"
+  }
+}

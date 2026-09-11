@@ -1,0 +1,14 @@
+{
+  "sessionId": "c816ac5d-6b1a-40b5-b5b3-fc23d7967585",
+  "timestamp": 1789161995934,
+  "cwd": "D:\\ITRoots\\GitHubCobilotCourse\\linkshortner",
+  "toolName": "glob",
+  "toolArgs": {
+    "pattern": "components/**",
+    "paths": ["D:\\ITRoots\\GitHubCobilotCourse\\linkshortner"]
+  },
+  "toolResult": {
+    "resultType": "success",
+    "textResultForLlm": "D:\\ITRoots\\GitHubCobilotCourse\\linkshortner\\components\\ui\\input.tsx\nD:\\ITRoots\\GitHubCobilotCourse\\linkshortner\\components\\ui\\dialog.tsx\nD:\\ITRoots\\GitHubCobilotCourse\\linkshortner\\components\\ui\\button.tsx\nD:\\ITRoots\\GitHubCobilotCourse\\linkshortner\\components\\link-actions.tsx\nD:\\ITRoots\\GitHubCobilotCourse\\linkshortner\\components\\create-link-dialog.tsx"
+  }
+}

@@ -1,5 +1,5 @@
 ---
-description: read this before impleminting or modifying ui components in the project 
+description: read this before impleminting or modifying ui components in the project
 ---
 
 # Shadcn UI Standards
@@ -32,9 +32,9 @@ All user-facing UI in LinkShorter must use shadcn/ui components. Do not build cu
 ## Example
 
 ```tsx
-import { Button } from '@/components/ui/button';
-import { Input } from '@/components/ui/input';
-import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
+import { Button } from "@/components/ui/button";
+import { Input } from "@/components/ui/input";
+import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 
 export function LinkForm() {
   return (

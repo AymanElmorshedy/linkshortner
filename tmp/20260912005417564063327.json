@@ -1,0 +1,14 @@
+{
+  "sessionId": "095394d5-9bf5-4a56-a9ff-2a82cc070641",
+  "timestamp": 1789163654038,
+  "cwd": "D:\\ITRoots\\GitHubCobilotCourse\\linkshortner",
+  "toolName": "powershell",
+  "toolArgs": {
+    "command": "bash -n .github\\hooks\\format.sh; '{\"toolName\":\"view\"}' | bash .github\\hooks\\format.sh",
+    "description": "Validate conditional formatting hook"
+  },
+  "toolResult": {
+    "resultType": "success",
+    "textResultForLlm": "/bin/bash: .githubhooksformat.sh: No such file or directory\n/bin/bash: .githubhooksformat.sh: No such file or directory\n<shellId: 3 completed with exit code 127>"
+  }
+}

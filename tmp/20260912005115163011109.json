@@ -1,0 +1,13 @@
+{
+  "sessionId": "095394d5-9bf5-4a56-a9ff-2a82cc070641",
+  "timestamp": 1789163471656,
+  "cwd": "D:\\ITRoots\\GitHubCobilotCourse\\linkshortner",
+  "toolName": "view",
+  "toolArgs": {
+    "path": "D:\\ITRoots\\GitHubCobilotCourse\\linkshortner\\.github\\hooks\\tool-output.json"
+  },
+  "toolResult": {
+    "resultType": "success",
+    "textResultForLlm": "{\n  \"version\": 1,\n  \"hooks\": {\n    \"postToolUse\": [\n      {\n        \"type\": \"command\",\n        \"bash\": \"mkdir -p tmp && cat > \\\"tmp/$(date +%Y%m%d%H%M%S%N).json\\\"\"\n      }\n    ]\n  }\n}\n"
+  }
+}

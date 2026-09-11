@@ -19,8 +19,12 @@ export default async function DashboardPage() {
       <div className="mx-auto w-full max-w-4xl space-y-8 py-8">
         <div className="flex flex-col gap-5 sm:flex-row sm:items-end sm:justify-between">
           <div>
-            <p className="text-sm font-medium text-zinc-500 dark:text-zinc-400">LinkShorter</p>
-            <h1 className="mt-2 text-3xl font-semibold tracking-tight">Your links</h1>
+            <p className="text-sm font-medium text-zinc-500 dark:text-zinc-400">
+              LinkShorter
+            </p>
+            <h1 className="mt-2 text-3xl font-semibold tracking-tight">
+              Your links
+            </h1>
           </div>
           <CreateLinkDialog />
         </div>

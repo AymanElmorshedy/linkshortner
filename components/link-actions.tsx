@@ -86,7 +86,12 @@ export function LinkActions({ link }: LinkActionsProps) {
       <Dialog open={editOpen} onOpenChange={handleEditOpenChange}>
         <DialogTrigger
           render={
-            <Button variant="ghost" size="icon" aria-label={`Edit ${link.shortCode}`} title="Edit link" />
+            <Button
+              variant="ghost"
+              size="icon"
+              aria-label={`Edit ${link.shortCode}`}
+              title="Edit link"
+            />
           }
         >
           <Pencil />
@@ -96,11 +101,16 @@ export function LinkActions({ link }: LinkActionsProps) {
           <DialogPopup>
             <div className="space-y-1">
               <DialogTitle>Edit link</DialogTitle>
-              <DialogDescription>Update the destination URL for /{link.shortCode}.</DialogDescription>
+              <DialogDescription>
+                Update the destination URL for /{link.shortCode}.
+              </DialogDescription>
             </div>
             <form className="space-y-4" onSubmit={handleEdit}>
               <div className="space-y-2">
-                <label htmlFor={`edit-url-${link.id}`} className="text-sm font-medium">
+                <label
+                  htmlFor={`edit-url-${link.id}`}
+                  className="text-sm font-medium"
+                >
                   Destination URL
                 </label>
                 <Input
@@ -111,14 +121,28 @@ export function LinkActions({ link }: LinkActionsProps) {
                   required
                   disabled={isPending}
                 />
-                {error ? <p className="text-sm text-destructive">{error}</p> : null}
+                {error ? (
+                  <p className="text-sm text-destructive">{error}</p>
+                ) : null}
               </div>
               <div className="flex justify-end gap-2">
-                <DialogClose render={<Button type="button" variant="outline" disabled={isPending} />}>
+                <DialogClose
+                  render={
+                    <Button
+                      type="button"
+                      variant="outline"
+                      disabled={isPending}
+                    />
+                  }
+                >
                   Cancel
                 </DialogClose>
                 <Button type="submit" disabled={isPending}>
-                  {isPending ? <LoaderCircle className="animate-spin" /> : <Pencil />}
+                  {isPending ? (
+                    <LoaderCircle className="animate-spin" />
+                  ) : (
+                    <Pencil />
+                  )}
                   {isPending ? "Saving..." : "Save changes"}
                 </Button>
               </div>
@@ -147,16 +171,33 @@ export function LinkActions({ link }: LinkActionsProps) {
             <div className="space-y-1">
               <DialogTitle>Delete link?</DialogTitle>
               <DialogDescription>
-                This will permanently delete /{link.shortCode}. This action cannot be undone.
+                This will permanently delete /{link.shortCode}. This action
+                cannot be undone.
               </DialogDescription>
             </div>
             {error ? <p className="text-sm text-destructive">{error}</p> : null}
             <div className="flex justify-end gap-2">
-              <DialogClose render={<Button type="button" variant="outline" disabled={isPending} />}>
+              <DialogClose
+                render={
+                  <Button
+                    type="button"
+                    variant="outline"
+                    disabled={isPending}
+                  />
+                }
+              >
                 Cancel
               </DialogClose>
-              <Button variant="destructive" onClick={handleDelete} disabled={isPending}>
-                {isPending ? <LoaderCircle className="animate-spin" /> : <Trash2 />}
+              <Button
+                variant="destructive"
+                onClick={handleDelete}
+                disabled={isPending}
+              >
+                {isPending ? (
+                  <LoaderCircle className="animate-spin" />
+                ) : (
+                  <Trash2 />
+                )}
                 {isPending ? "Deleting..." : "Delete link"}
               </Button>
             </div>

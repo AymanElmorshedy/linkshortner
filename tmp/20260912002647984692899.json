@@ -1,0 +1,14 @@
+{
+  "sessionId": "c816ac5d-6b1a-40b5-b5b3-fc23d7967585",
+  "timestamp": 1789162004002,
+  "cwd": "D:\\ITRoots\\GitHubCobilotCourse\\linkshortner",
+  "toolName": "glob",
+  "toolArgs": {
+    "pattern": "node_modules/next/dist/docs/**",
+    "paths": ["D:\\ITRoots\\GitHubCobilotCourse\\linkshortner"]
+  },
+  "toolResult": {
+    "resultType": "success",
+    "textResultForLlm": "No files matched the pattern."
+  }
+}

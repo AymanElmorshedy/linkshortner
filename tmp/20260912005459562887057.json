@@ -1,0 +1,14 @@
+{
+  "sessionId": "095394d5-9bf5-4a56-a9ff-2a82cc070641",
+  "timestamp": 1789163696056,
+  "cwd": "D:\\ITRoots\\GitHubCobilotCourse\\linkshortner",
+  "toolName": "powershell",
+  "toolArgs": {
+    "command": "bash -n ./.github/hooks/format.sh; '{\"toolName\":\"view\"}' | bash ./.github/hooks/format.sh",
+    "description": "Validate conditional formatting hook"
+  },
+  "toolResult": {
+    "resultType": "success",
+    "textResultForLlm": "./.github/hooks/format.sh: line 22: syntax error: unexpected end of file\n./.github/hooks/format.sh: line 2: $'\\r': command not found\n./.github/hooks/format.sh: line 3: set: pipefail\r: invalid option name\n<shellId: 5 completed with exit code 2>"
+  }
+}

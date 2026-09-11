@@ -1,0 +1,14 @@
+{
+  "sessionId": "095394d5-9bf5-4a56-a9ff-2a82cc070641",
+  "timestamp": 1789163477140,
+  "cwd": "D:\\ITRoots\\GitHubCobilotCourse\\linkshortner",
+  "toolName": "powershell",
+  "toolArgs": {
+    "command": "Get-ChildItem -Force .github\\hooks | Select-Object Name,Length,Mode",
+    "description": "Inspect hook files"
+  },
+  "toolResult": {
+    "resultType": "success",
+    "textResultForLlm": "Name             Length Mode\n----             ------ ----\nformat.json         148 -a---\ntool-output.json    184 -a---\n<shellId: 2 completed with exit code 0>"
+  }
+}

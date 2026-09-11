@@ -1,28 +1,31 @@
-import { Dialog as DialogPrimitive } from "@base-ui/react/dialog"
-import * as React from "react"
+import { Dialog as DialogPrimitive } from "@base-ui/react/dialog";
+import * as React from "react";
 
-import { cn } from "@/lib/utils"
+import { cn } from "@/lib/utils";
 
 function Dialog({ ...props }: DialogPrimitive.Root.Props) {
-  return <DialogPrimitive.Root data-slot="dialog" {...props} />
+  return <DialogPrimitive.Root data-slot="dialog" {...props} />;
 }
 
 function DialogTrigger({ ...props }: DialogPrimitive.Trigger.Props) {
-  return <DialogPrimitive.Trigger data-slot="dialog-trigger" {...props} />
+  return <DialogPrimitive.Trigger data-slot="dialog-trigger" {...props} />;
 }
 
 function DialogPortal({ ...props }: DialogPrimitive.Portal.Props) {
-  return <DialogPrimitive.Portal data-slot="dialog-portal" {...props} />
+  return <DialogPrimitive.Portal data-slot="dialog-portal" {...props} />;
 }
 
-function DialogBackdrop({ className, ...props }: DialogPrimitive.Backdrop.Props) {
+function DialogBackdrop({
+  className,
+  ...props
+}: DialogPrimitive.Backdrop.Props) {
   return (
     <DialogPrimitive.Backdrop
       data-slot="dialog-backdrop"
       className={cn("fixed inset-0 z-50 bg-black/70", className)}
       {...props}
     />
-  )
+  );
 }
 
 function DialogPopup({ className, ...props }: DialogPrimitive.Popup.Props) {
@@ -35,7 +38,7 @@ function DialogPopup({ className, ...props }: DialogPrimitive.Popup.Props) {
       )}
       {...props}
     />
-  )
+  );
 }
 
 function DialogTitle({ className, ...props }: DialogPrimitive.Title.Props) {
@@ -45,21 +48,24 @@ function DialogTitle({ className, ...props }: DialogPrimitive.Title.Props) {
       className={cn("text-lg font-semibold", className)}
       {...props}
     />
-  )
+  );
 }
 
-function DialogDescription({ className, ...props }: DialogPrimitive.Description.Props) {
+function DialogDescription({
+  className,
+  ...props
+}: DialogPrimitive.Description.Props) {
   return (
     <DialogPrimitive.Description
       data-slot="dialog-description"
       className={cn("text-sm text-muted-foreground", className)}
       {...props}
     />
-  )
+  );
 }
 
 function DialogClose({ ...props }: DialogPrimitive.Close.Props) {
-  return <DialogPrimitive.Close data-slot="dialog-close" {...props} />
+  return <DialogPrimitive.Close data-slot="dialog-close" {...props} />;
 }
 
 export {
@@ -71,4 +77,4 @@ export {
   DialogPortal,
   DialogTitle,
   DialogTrigger,
-}
+};

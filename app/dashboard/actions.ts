@@ -51,7 +51,10 @@ export async function createLinkAction(input: CreateLinkInput) {
 
     return { success: true, data: link };
   } catch {
-    return { success: false, error: "We could not create that link. Please try again." };
+    return {
+      success: false,
+      error: "We could not create that link. Please try again.",
+    };
   }
 }
 
@@ -69,12 +72,19 @@ export async function updateLinkAction(input: UpdateLinkInput) {
   }
 
   try {
-    const link = await updateLink(userId, parsedInput.data.linkId, parsedInput.data.url);
+    const link = await updateLink(
+      userId,
+      parsedInput.data.linkId,
+      parsedInput.data.url,
+    );
     revalidatePath("/dashboard");
 
     return { success: true, data: link };
   } catch {
-    return { success: false, error: "We could not update that link. Please try again." };
+    return {
+      success: false,
+      error: "We could not update that link. Please try again.",
+    };
   }
 }
 
@@ -97,6 +107,9 @@ export async function deleteLinkAction(input: DeleteLinkInput) {
 
     return { success: true };
   } catch {
-    return { success: false, error: "We could not delete that link. Please try again." };
+    return {
+      success: false,
+      error: "We could not delete that link. Please try again.",
+    };
   }
 }

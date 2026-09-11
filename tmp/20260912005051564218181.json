@@ -1,0 +1,13 @@
+{
+  "sessionId": "095394d5-9bf5-4a56-a9ff-2a82cc070641",
+  "timestamp": 1789163441123,
+  "cwd": "D:\\ITRoots\\GitHubCobilotCourse\\linkshortner",
+  "toolName": "view",
+  "toolArgs": {
+    "path": "D:\\ITRoots\\GitHubCobilotCourse\\linkshortner\\.github\\hooks\\format.json"
+  },
+  "toolResult": {
+    "resultType": "success",
+    "textResultForLlm": "{\n  \"version\": 1,\n  \"hooks\": {\n    \"postToolUse\": [\n      {\n        \"type\": \"command\",\n        \"bash\": \"npx prettier --write .\"\n      }\n    ]\n  }\n}\n"
+  }
+}

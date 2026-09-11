@@ -1,0 +1,14 @@
+{
+  "sessionId": "c816ac5d-6b1a-40b5-b5b3-fc23d7967585",
+  "timestamp": 1789162011149,
+  "cwd": "D:\\ITRoots\\GitHubCobilotCourse\\linkshortner",
+  "toolName": "glob",
+  "toolArgs": {
+    "pattern": "app/**",
+    "paths": ["D:\\ITRoots\\GitHubCobilotCourse\\linkshortner"]
+  },
+  "toolResult": {
+    "resultType": "success",
+    "textResultForLlm": "D:\\ITRoots\\GitHubCobilotCourse\\linkshortner\\app\\sign-up\\[[...sign-up]]\\page.tsx\nD:\\ITRoots\\GitHubCobilotCourse\\linkshortner\\app\\globals.css\nD:\\ITRoots\\GitHubCobilotCourse\\linkshortner\\app\\favicon.ico\nD:\\ITRoots\\GitHubCobilotCourse\\linkshortner\\app\\layout.tsx\nD:\\ITRoots\\GitHubCobilotCourse\\linkshortner\\app\\page.tsx\nD:\\ITRoots\\GitHubCobilotCourse\\linkshortner\\app\\dashboard\\page.tsx\nD:\\ITRoots\\GitHubCobilotCourse\\linkshortner\\app\\dashboard\\actions.ts\nD:\\ITRoots\\GitHubCobilotCourse\\linkshortner\\app\\sign-in\\[[...sign-in]]\\page.tsx\nD:\\ITRoots\\GitHubCobilotCourse\\linkshortner\\app\\l\\[shortcode]\\route.ts"
+  }
+}
