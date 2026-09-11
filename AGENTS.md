@@ -2,7 +2,7 @@
 
 > **For Developers & AI Agents**: This file is the index for comprehensive coding standards for the LinkShorter project. Read this page first, then refer to specific docs in the `/docs` directory.
 
-> **CRITICAL RULE: BEFORE GENERATING ANY CODE, ALWAYS read the relevant individual instruction file(s) in `/docs` for the task at hand.** Do not skip the docs, do not infer the implementation from memory alone, and do not write code until the relevant documentation has been reviewed. The docs in `/docs` are the source of truth for project standards and required patterns.
+<!-- > **CRITICAL RULE: BEFORE GENERATING ANY CODE, ALWAYS read the relevant individual instruction file(s) in `/docs` for the task at hand.** Do not skip the docs, do not infer the implementation from memory alone, and do not write code until the relevant documentation has been reviewed. The docs in `/docs` are the source of truth for project standards and required patterns. -->
 
 ---
 
@@ -101,15 +101,6 @@ These docs establish **coding standards and patterns** for the LinkShorter proje
 
 ---
 
-## ✅ Pre-Implementation Checklist
-
-Before starting work, ensure you understand:
-
-1. Read the relevant instruction file(s) in `/docs` for the task before writing any code.
-2. Use the documentation as the source of truth for required patterns and standards.
-3. If the work touches multiple areas, read each relevant document before implementation.
-4. Never generate code without first reviewing the applicable `/docs` guidance.
-5. This requirement is mandatory, not optional.
 
 ---
 

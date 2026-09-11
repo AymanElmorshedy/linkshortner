@@ -1,3 +1,8 @@
+---
+description: read this before implementing or modifying authentication in the project 
+
+---
+
 # Clerk Authentication Flow & Protected Routes
 
 ## Overview

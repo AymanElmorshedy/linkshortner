@@ -1,3 +1,7 @@
+---
+description: read this before impleminting or modifying ui components in the project 
+---
+
 # Shadcn UI Standards
 
 ## Core Rule
