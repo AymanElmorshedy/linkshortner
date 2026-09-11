@@ -1,6 +1,7 @@
 import { NextResponse } from "next/server";
 
 import { getLinkByShortCode } from "@/data/links";
+import { isSafeRedirectUrl } from "@/lib/url";
 
 type RedirectRouteContext = {
   params: Promise<{ shortcode: string }>;
@@ -15,6 +16,10 @@ export async function GET(
 
   if (!link) {
     return new Response("Link not found", { status: 404 });
+  }
+
+  if (!isSafeRedirectUrl(link.originalUrl)) {
+    return new Response("Invalid redirect target", { status: 400 });
   }
 
   return NextResponse.redirect(new URL(link.originalUrl));
