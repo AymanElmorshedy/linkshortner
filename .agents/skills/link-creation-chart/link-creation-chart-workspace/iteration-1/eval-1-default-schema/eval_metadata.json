@@ -1,0 +1,11 @@
+{
+  "eval_id": 1,
+  "eval_name": "default-schema-monthly-chart",
+  "prompt": "In this project, create a PNG bar chart showing how many rows were added to the links table in each of the latest 12 calendar months. Read the database URL from the project's environment file and use a Python script for the query and plot.",
+  "assertions": [
+    {"text": "Reads DATABASE_URL from .env or .env.local without printing it", "passed": null, "evidence": ""},
+    {"text": "Counts links.created_at over exactly 12 calendar months", "passed": null, "evidence": ""},
+    {"text": "Exports a PNG with 12 chronological month labels and a link-count y-axis", "passed": null, "evidence": ""},
+    {"text": "Preserves months with no links as zero", "passed": null, "evidence": ""}
+  ]
+}

@@ -1,0 +1,10 @@
+{
+  "eval_id": 2,
+  "eval_name": "empty-month-zero-fill",
+  "prompt": "Make the monthly link analytics chart robust when some months have no new links. It should still show all 12 months, use the database's current date, and export a PNG from a Python script.",
+  "assertions": [
+    {"text": "Preserves empty months as zero-count entries", "passed": null, "evidence": ""},
+    {"text": "Uses exactly 12 calendar months including the current month", "passed": null, "evidence": ""},
+    {"text": "Saves a PNG and labels both axes", "passed": null, "evidence": ""}
+  ]
+}

@@ -1,0 +1,39 @@
+{
+  "skill_name": "link-creation-chart",
+  "evals": [
+    {
+      "id": 1,
+      "prompt": "In this project, create a PNG bar chart showing how many rows were added to the links table in each of the latest 12 calendar months. Read the database URL from the project's environment file and use a Python script for the query and plot.",
+      "expected_output": "A reusable Python script is run or provided, and it produces a non-empty PNG with 12 chronological month labels, a zero-based link-count y-axis, and data sourced from links.created_at.",
+      "files": [],
+      "expectations": [
+        "The solution reads DATABASE_URL from .env or .env.local without printing the secret.",
+        "The SQL counts links.created_at over exactly the current month and preceding 11 calendar months.",
+        "The output is a PNG bar chart with 12 chronological x-axis labels and link counts on the y-axis.",
+        "Months with no links are represented with zero rather than omitted."
+      ]
+    },
+    {
+      "id": 2,
+      "prompt": "Make the monthly link analytics chart robust when some months have no new links. It should still show all 12 months, use the database's current date, and export a PNG from a Python script.",
+      "expected_output": "The implementation uses a generated 12-month series or equivalent zero-fill logic and exports a readable PNG chart.",
+      "files": [],
+      "expectations": [
+        "The implementation explicitly preserves empty months as zero-count entries.",
+        "The date window contains exactly 12 calendar months and includes the current month.",
+        "The chart is saved as a PNG and labels both axes."
+      ]
+    },
+    {
+      "id": 3,
+      "prompt": "Our PostgreSQL project stores shortened links in short_links.created_on rather than links.created_at. Build a Python-based monthly chart for the latest 12 months, reading DATABASE_URL from the environment and exporting a PNG. Adapt to the actual schema instead of assuming the default names.",
+      "expected_output": "The solution discovers or accepts the project's actual table and timestamp column, performs a read-only monthly aggregation, and exports a 12-month PNG chart.",
+      "files": [],
+      "expectations": [
+        "The implementation uses short_links and created_on after verifying the schema or accepts safe identifier overrides.",
+        "The database URL is read from an environment file without being exposed.",
+        "The result includes all 12 months in order, including zero-count months, and is exported as PNG."
+      ]
+    }
+  ]
+}

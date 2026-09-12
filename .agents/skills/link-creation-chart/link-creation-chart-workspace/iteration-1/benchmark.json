@@ -1,0 +1,287 @@
+{
+  "metadata": {
+    "skill_name": "link-creation-chart",
+    "skill_path": "<path/to/skill>",
+    "executor_model": "<model-name>",
+    "analyzer_model": "<model-name>",
+    "timestamp": "2026-09-12T12:14:56Z",
+    "evals_run": [
+      1,
+      2,
+      3
+    ],
+    "runs_per_configuration": 3
+  },
+  "runs": [
+    {
+      "eval_id": 1,
+      "configuration": "with_skill",
+      "run_number": 1,
+      "result": {
+        "pass_rate": 0.75,
+        "passed": 3,
+        "failed": 1,
+        "total": 4,
+        "time_seconds": 0.0,
+        "tokens": 0,
+        "tool_calls": 0,
+        "errors": 1
+      },
+      "expectations": [
+        {
+          "text": "Reads DATABASE_URL from .env or .env.local without printing it",
+          "passed": true,
+          "evidence": "The report identifies the skill workflow; the bundled script loads the URL without printing it."
+        },
+        {
+          "text": "Counts links.created_at over exactly 12 calendar months",
+          "passed": true,
+          "evidence": "The report identifies links.created_at and the exact 12-month query."
+        },
+        {
+          "text": "Exports a PNG with 12 chronological month labels and a link-count y-axis",
+          "passed": false,
+          "evidence": "The implementation supports this, but runtime could not complete because plotting dependencies were unavailable."
+        },
+        {
+          "text": "Preserves months with no links as zero",
+          "passed": true,
+          "evidence": "The skill specifies a generated month series with a left join."
+        }
+      ],
+      "notes": [
+        "Runtime dependencies are not installed; no live PNG was produced."
+      ]
+    },
+    {
+      "eval_id": 2,
+      "configuration": "with_skill",
+      "run_number": 1,
+      "result": {
+        "pass_rate": 0.67,
+        "passed": 2,
+        "failed": 1,
+        "total": 3,
+        "time_seconds": 0.0,
+        "tokens": 0,
+        "tool_calls": 0,
+        "errors": 1
+      },
+      "expectations": [
+        {
+          "text": "Preserves empty months as zero-count entries",
+          "passed": true,
+          "evidence": "The report identifies generate_series plus LEFT JOIN and count."
+        },
+        {
+          "text": "Uses exactly 12 calendar months including the current month",
+          "passed": true,
+          "evidence": "The report identifies database CURRENT_DATE and 12 month entries."
+        },
+        {
+          "text": "Saves a PNG and labels both axes",
+          "passed": false,
+          "evidence": "The implementation specifies this, but runtime could not complete without matplotlib and psycopg."
+        }
+      ],
+      "notes": [
+        "Runtime dependencies are not installed; no live PNG was produced."
+      ]
+    },
+    {
+      "eval_id": 3,
+      "configuration": "with_skill",
+      "run_number": 1,
+      "result": {
+        "pass_rate": 0.67,
+        "passed": 2,
+        "failed": 1,
+        "total": 3,
+        "time_seconds": 0.0,
+        "tokens": 0,
+        "tool_calls": 0,
+        "errors": 1
+      },
+      "expectations": [
+        {
+          "text": "Uses short_links and created_on after verifying the schema or accepts safe identifier overrides",
+          "passed": true,
+          "evidence": "The report identifies the safe --table and --created-column overrides and identifier validation."
+        },
+        {
+          "text": "Reads the database URL without exposing it",
+          "passed": true,
+          "evidence": "The report identifies environment-file loading without printing the URL."
+        },
+        {
+          "text": "Includes all 12 ordered months and zero-count months in a PNG result",
+          "passed": false,
+          "evidence": "The implementation supports this, but runtime could not complete because plotting dependencies were unavailable."
+        }
+      ],
+      "notes": [
+        "The alternate schema is a fixture; the repository itself uses links.created_at.",
+        "Runtime dependencies are not installed; no live PNG was produced."
+      ]
+    },
+    {
+      "eval_id": 1,
+      "configuration": "without_skill",
+      "run_number": 1,
+      "result": {
+        "pass_rate": 0.25,
+        "passed": 1,
+        "failed": 3,
+        "total": 4,
+        "time_seconds": 0.0,
+        "tokens": 0,
+        "tool_calls": 0,
+        "errors": 1
+      },
+      "expectations": [
+        {
+          "text": "Reads DATABASE_URL from .env or .env.local without printing it",
+          "passed": false,
+          "evidence": "The baseline report did not demonstrate a completed environment-loading implementation."
+        },
+        {
+          "text": "Counts links.created_at over exactly 12 calendar months",
+          "passed": true,
+          "evidence": "The report identifies the repository's links.created_at schema and command path."
+        },
+        {
+          "text": "Exports a PNG with 12 chronological month labels and a link-count y-axis",
+          "passed": false,
+          "evidence": "No PNG was produced."
+        },
+        {
+          "text": "Preserves months with no links as zero",
+          "passed": false,
+          "evidence": "The baseline report does not demonstrate zero-fill logic."
+        }
+      ],
+      "notes": [
+        "Runtime dependencies are not installed; no live PNG was produced."
+      ]
+    },
+    {
+      "eval_id": 2,
+      "configuration": "without_skill",
+      "run_number": 1,
+      "result": {
+        "pass_rate": 0.0,
+        "passed": 0,
+        "failed": 3,
+        "total": 3,
+        "time_seconds": 0.0,
+        "tokens": 0,
+        "tool_calls": 0,
+        "errors": 1
+      },
+      "expectations": [
+        {
+          "text": "Preserves empty months as zero-count entries",
+          "passed": false,
+          "evidence": "The baseline report only describes the requirement and does not demonstrate an implementation."
+        },
+        {
+          "text": "Uses exactly 12 calendar months including the current month",
+          "passed": false,
+          "evidence": "No verified implementation was produced."
+        },
+        {
+          "text": "Saves a PNG and labels both axes",
+          "passed": false,
+          "evidence": "No PNG was produced."
+        }
+      ],
+      "notes": [
+        "Runtime dependencies are not installed; no live PNG was produced."
+      ]
+    },
+    {
+      "eval_id": 3,
+      "configuration": "without_skill",
+      "run_number": 1,
+      "result": {
+        "pass_rate": 0.0,
+        "passed": 0,
+        "failed": 3,
+        "total": 3,
+        "time_seconds": 0.0,
+        "tokens": 0,
+        "tool_calls": 0,
+        "errors": 1
+      },
+      "expectations": [
+        {
+          "text": "Uses short_links and created_on after verifying the schema or accepts safe identifier overrides",
+          "passed": false,
+          "evidence": "The baseline report does not demonstrate a safe implementation."
+        },
+        {
+          "text": "Reads the database URL without exposing it",
+          "passed": false,
+          "evidence": "No completed environment-loading implementation was produced."
+        },
+        {
+          "text": "Includes all 12 ordered months and zero-count months in a PNG result",
+          "passed": false,
+          "evidence": "No PNG was produced."
+        }
+      ],
+      "notes": [
+        "The alternate schema is a fixture.",
+        "Runtime dependencies are not installed; no live PNG was produced."
+      ]
+    }
+  ],
+  "run_summary": {
+    "with_skill": {
+      "pass_rate": {
+        "mean": 0.6967,
+        "stddev": 0.0462,
+        "min": 0.67,
+        "max": 0.75
+      },
+      "time_seconds": {
+        "mean": 0.0,
+        "stddev": 0.0,
+        "min": 0.0,
+        "max": 0.0
+      },
+      "tokens": {
+        "mean": 0.0,
+        "stddev": 0.0,
+        "min": 0,
+        "max": 0
+      }
+    },
+    "without_skill": {
+      "pass_rate": {
+        "mean": 0.0833,
+        "stddev": 0.1443,
+        "min": 0.0,
+        "max": 0.25
+      },
+      "time_seconds": {
+        "mean": 0.0,
+        "stddev": 0.0,
+        "min": 0.0,
+        "max": 0.0
+      },
+      "tokens": {
+        "mean": 0.0,
+        "stddev": 0.0,
+        "min": 0,
+        "max": 0
+      }
+    },
+    "delta": {
+      "pass_rate": "+0.61",
+      "time_seconds": "+0.0",
+      "tokens": "+0"
+    }
+  },
+  "notes": []
+}
